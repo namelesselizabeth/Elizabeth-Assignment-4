@@ -23,40 +23,38 @@ private Student[] students = new Student[100];
 			
 			app.sortArrayByGrade();
 				
+			try {
 				if (student.getCourse().contains("APMTH")) {
-					try (
-					BufferedWriter writer1 = new BufferedWriter(new FileWriter("src\\csv\\files\\course1.csv")) ) {
-			
-					writer1.write("Student ID" + "," + "Student Name" + "," + "Course" + "," + "Grade\n");
-					writer1.write(student.getStudentID() + "," + student.getStudentName() + "," + student.getCourse()
+					
+					writer = new BufferedWriter(new FileWriter("src\\csv\\files\\course1.csv"));
+					writer.write("Student ID" + "," + "Student Name" + "," + "Course" + "," + "Grade\n");
+					writer.write(student.getStudentID() + "," + student.getStudentName() + "," + student.getCourse()
 								+ "," + student.getGrade() +"\n");
-					}
+					
 				}
 				
 				else if (student.getCourse().contains("COMPSCI")) {
-					
-					try(
-					BufferedWriter writer1 = new BufferedWriter(new FileWriter("src\\csv\\files\\course2.csv")) ) {
-					writer1.write("Student ID" + "," + "Student Name" + "," + "Course" + "," + "Grade\n");
-					writer1.write(student.getStudentID() + "," + student.getStudentName() + "," + student.getCourse()
+				
+					writer = new BufferedWriter(new FileWriter("src\\csv\\files\\course2.csv"));
+					writer.write("Student ID" + "," + "Student Name" + "," + "Course" + "," + "Grade\n");
+					writer.write(student.getStudentID() + "," + student.getStudentName() + "," + student.getCourse()
 							+ "," + student.getGrade() +"\n");
 					}
-				}
 				
 				else if (student.getCourse().contains("STAT")) {
 					
-					try (
-					BufferedWriter writer1 = new BufferedWriter(new FileWriter("src\\csv\\files\\course3.csv")) ) {
-					writer1.write("Student ID" + "," + "Student Name" + "," + "Course" + "," + "Grade\n");
-					writer1.write(student.getStudentID() + "," + student.getStudentName() + "," + student.getCourse()
+					writer = new BufferedWriter(new FileWriter("src\\csv\\files\\course3.csv")); 
+					writer.write("Student ID" + "," + "Student Name" + "," + "Course" + "," + "Grade\n");
+					writer.write(student.getStudentID() + "," + student.getStudentName() + "," + student.getCourse()
 							+ "," + student.getGrade() +"\n");
-					}
 				}
-			
+			} finally {
+				
 			}
-
+			
+			if(writer != null) writer.close();
 		}
-	
+	}
 
 	/**
 	 * Create Student Array.  HeaderLine skips first line of file

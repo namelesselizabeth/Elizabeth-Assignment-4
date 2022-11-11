@@ -23,26 +23,31 @@ private Student[] students = new Student[100];
 			app.sortArrayByGrade();
 			try {
 				
+				
 				if (student.getCourse().contains("APMTH")) {
 					writer = new BufferedWriter(new FileWriter("src\\csv\\files\\course1.csv"));
 					writer.write("Student ID" + "," + "Student Name" + "," + "Course" + "," + "Grade\n");
 					writer.write(student.getStudentID() + "," + student.getStudentName() + "," + student.getCourse()
 								+ "," + student.getGrade() +"\n");
+					
 				}
 				
 				else if (student.getCourse().contains("COMPSCI")) {
 					writer = new BufferedWriter(new FileWriter("src\\csv\\files\\course2.csv"));
 					writer.write("Student ID" + "," + "Student Name" + "," + "Course" + "," + "Grade\n");
 					writer.write(student.getStudentID() + "," + student.getStudentName() + "," + student.getCourse()
-					+ "," + student.getGrade() +"\n");
+							+ "," + student.getGrade() +"\n");
+			
 				}
 				
 				else if (student.getCourse().contains("STAT")) {
 					writer = new BufferedWriter(new FileWriter("src\\csv\\files\\course3.csv"));
 					writer.write("Student ID" + "," + "Student Name" + "," + "Course" + "," + "Grade\n");
 					writer.write(student.getStudentID() + "," + student.getStudentName() + "," + student.getCourse()
-					+ "," + student.getGrade() +"\n");
+							+ "," + student.getGrade() +"\n");
+					
 				}
+				
 			}
 			
 			finally {

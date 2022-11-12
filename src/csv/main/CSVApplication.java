@@ -16,44 +16,51 @@ private Student[] students = new Student[100];
 
 		CSVApplication app = new CSVApplication();
 		app.createStudentArray();
-
+		app.sortArrayByGrade();
+		
 		BufferedWriter writer = null;
-
-		for (Student student : app.students) {
-			
-			app.sortArrayByGrade();
-				
-			try {
+		
+		writer = new BufferedWriter(new FileWriter("src\\csv\\files\\course1.csv"));
+		writer.write("Student ID" + "," + "Student Name" + "," + "Course" + "," + "Grade\n");
+			for (Student student : app.students) {
 				if (student.getCourse().contains("APMTH")) {
-					
-					writer = new BufferedWriter(new FileWriter("src\\csv\\files\\course1.csv"));
-					writer.write("Student ID" + "," + "Student Name" + "," + "Course" + "," + "Grade\n");
+		
 					writer.write(student.getStudentID() + "," + student.getStudentName() + "," + student.getCourse()
 								+ "," + student.getGrade() +"\n");
 					
 				}
-				
-				else if (student.getCourse().contains("COMPSCI")) {
-				
-					writer = new BufferedWriter(new FileWriter("src\\csv\\files\\course2.csv"));
-					writer.write("Student ID" + "," + "Student Name" + "," + "Course" + "," + "Grade\n");
+			
+			}
+			
+		if(writer != null) writer.close();
+			
+		writer = null;
+		writer = new BufferedWriter(new FileWriter("src\\csv\\files\\course2.csv"));
+		writer.write("Student ID" + "," + "Student Name" + "," + "Course" + "," + "Grade\n");
+			for (Student student : app.students) {
+				if (student.getCourse().contains("COMPSCI")) {
+
 					writer.write(student.getStudentID() + "," + student.getStudentName() + "," + student.getCourse()
 							+ "," + student.getGrade() +"\n");
 					}
-				
-				else if (student.getCourse().contains("STAT")) {
+			}
+		
+		if(writer != null) writer.close();
+		
+		writer = null;
+		writer = new BufferedWriter(new FileWriter("src\\csv\\files\\course3.csv"));
+		writer.write("Student ID" + "," + "Student Name" + "," + "Course" + "," + "Grade\n");
+			for (Student student : app.students) {
+				if (student.getCourse().contains("STAT")) {
 					
-					writer = new BufferedWriter(new FileWriter("src\\csv\\files\\course3.csv")); 
-					writer.write("Student ID" + "," + "Student Name" + "," + "Course" + "," + "Grade\n");
 					writer.write(student.getStudentID() + "," + student.getStudentName() + "," + student.getCourse()
 							+ "," + student.getGrade() +"\n");
 				}
-			} finally {
 				
-			}
-			
-			if(writer != null) writer.close();
+		
 		}
+		
+		if(writer != null) writer.close();
 	}
 
 	/**
@@ -86,7 +93,7 @@ private Student[] students = new Student[100];
 			@Override
 			public int compare(Student o1, Student o2) {
 				
-				return o1.getGrade().compareTo(o2.getGrade());
+				return o2.getGrade().compareTo(o1.getGrade());
 			}
 		});
 	}
